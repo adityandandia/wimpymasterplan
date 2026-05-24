@@ -6,111 +6,112 @@
 <title>Aditya ND · Summer 2026</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
-  :root {
-    --bg: #0a0a0a; --bg2: #111111; --bg3: #181818; --bg4: #222222;
-    --border: #2a2a2a; --border2: #333333;
-    --text: #e8e4dc; --text2: #8a8680; --text3: #4a4845;
-    --accent: #e8c547; --accent2: #c4a832;
-    --ghost: #4a90d9; --dl: #9b7fe8; --yt: #e8674a; --lab: #4ac49b; --body: #e8a84a;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; overflow: hidden; }
-  body { background: var(--bg); color: var(--text); font-family: 'IBM Plex Mono', monospace; display: flex; flex-direction: column; height: 100vh; }
+:root{--bg:#0a0a0a;--bg2:#111111;--bg3:#181818;--border:#2a2a2a;--border2:#333333;--text:#e8e4dc;--text2:#8a8680;--text3:#4a4845;--accent:#e8c547;--ghost:#4a90d9;--dl:#9b7fe8;--yt:#e8674a;--lab:#4ac49b;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;display:flex;flex-direction:column;height:100vh;font-size:14px;}
 
-  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
-  .topbar-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.08em; color: var(--accent); }
-  .topbar-sub { font-size: 10px; color: var(--text3); letter-spacing: 0.12em; margin-left: 16px; }
-  .topbar-left { display: flex; align-items: baseline; }
-  .topbar-right { display: flex; gap: 10px; align-items: center; }
-  .track-dot { display: flex; align-items: center; gap: 5px; font-size: 9px; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; }
-  .dot { width: 6px; height: 6px; border-radius: 50%; }
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.topbar-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;color:var(--accent);}
+.topbar-sub{font-size:10px;color:var(--text3);letter-spacing:.1em;margin-left:14px;}
+.topbar-left{display:flex;align-items:baseline;}
+.topbar-right{display:flex;gap:8px;align-items:center;}
+.track-dot{display:flex;align-items:center;gap:5px;font-size:9px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;}
+.dot{width:6px;height:6px;border-radius:50%;}
 
-  .main { display: grid; grid-template-columns: 300px 1fr; flex: 1; overflow: hidden; }
+.main{display:grid;grid-template-columns:260px 1fr;flex:1;overflow:hidden;}
 
-  .left { border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; background: var(--bg2); }
-  .cal-header { padding: 20px 20px 12px; border-bottom: 1px solid var(--border); }
-  .cal-month { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--text); line-height: 1; }
-  .cal-year { font-size: 11px; color: var(--text3); letter-spacing: 0.1em; margin-top: 2px; }
-  .cal-nav { display: flex; gap: 8px; margin-top: 12px; }
-  .cal-nav button { background: var(--bg3); border: 1px solid var(--border2); color: var(--text2); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 4px 10px; cursor: pointer; letter-spacing: 0.08em; transition: all 0.15s; }
-  .cal-nav button:hover { border-color: var(--accent); color: var(--accent); }
-  .cal-grid-wrap { padding: 16px 20px; }
-  .cal-days-header { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 8px; }
-  .cal-day-name { text-align: center; font-size: 9px; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 0; }
-  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
-  .cal-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; cursor: pointer; border-radius: 3px; transition: all 0.12s; position: relative; color: var(--text2); user-select: none; }
-  .cal-cell:hover { background: var(--bg3); color: var(--text); }
-  .cal-cell.empty { cursor: default; }
-  .cal-cell.empty:hover { background: transparent; }
-  .cal-cell.in-plan { color: var(--text); }
-  .cal-cell.in-plan::after { content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); width: 3px; height: 3px; border-radius: 50%; background: var(--accent); opacity: 0.5; }
-  .cal-cell.selected { background: var(--accent) !important; color: #0a0a0a !important; font-weight: 600; }
-  .cal-cell.selected::after { display: none; }
-  .cal-cell.today { border: 1px solid var(--border2); color: var(--accent); }
-  .cal-cell.past { color: var(--text3); }
+/* LEFT */
+.left{border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;background:var(--bg2);}
+.cal-header{padding:16px 16px 10px;border-bottom:1px solid var(--border);}
+.cal-month{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.06em;color:var(--text);line-height:1;}
+.cal-year{font-size:10px;color:var(--text3);margin-top:2px;}
+.cal-nav{display:flex;gap:6px;margin-top:8px;}
+.cal-nav button{background:var(--bg3);border:1px solid var(--border2);color:var(--text2);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 10px;cursor:pointer;transition:all .15s;}
+.cal-nav button:hover{border-color:var(--accent);color:var(--accent);}
+.left-scroll{overflow-y:auto;flex:1;}
+.left-scroll::-webkit-scrollbar{width:0;}
+.cal-grid-wrap{padding:12px 14px;}
+.cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:5px;}
+.cal-day-name{text-align:center;font-size:9px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;padding:3px 0;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+.cal-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;cursor:pointer;border-radius:3px;transition:all .12s;position:relative;color:var(--text2);user-select:none;}
+.cal-cell:hover{background:var(--bg3);color:var(--text);}
+.cal-cell.empty{cursor:default;}.cal-cell.empty:hover{background:transparent;}
+.cal-cell.in-plan{color:var(--text);}
+.cal-cell.in-plan::after{content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:3px;height:3px;border-radius:50%;background:var(--accent);opacity:.5;}
+.cal-cell.selected{background:var(--accent)!important;color:#0a0a0a!important;font-weight:600;}
+.cal-cell.selected::after{display:none;}
+.cal-cell.today{border:1px solid var(--border2);color:var(--accent);}
+.cal-cell.past{color:var(--text3);}
+.week-indicator{margin:0 14px 10px;padding:9px 11px;background:var(--bg3);border:1px solid var(--border);border-left:2px solid var(--accent);}
+.wi-label{font-size:9px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;}
+.wi-phase{font-size:11px;font-weight:500;}
+.wi-dates{font-size:10px;color:var(--text2);margin-top:2px;}
+.phase-legend{padding:0 14px 14px;}
+.pl-title{font-size:9px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;}
+.pl-item{display:flex;align-items:center;gap:7px;margin-bottom:5px;font-size:10px;color:var(--text2);}
+.pl-bar{height:3px;width:20px;border-radius:1px;}
 
-  .left-scroll { overflow-y: auto; flex: 1; }
-  .left-scroll::-webkit-scrollbar { width: 0; }
+/* RIGHT */
+.right{display:flex;flex-direction:column;overflow:hidden;}
+.right-header{padding:16px 24px 12px;border-bottom:1px solid var(--border);flex-shrink:0;display:flex;align-items:flex-end;justify-content:space-between;}
+.rh-left{}
+.rh-date{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.05em;line-height:1;color:var(--text);}
+.rh-week{font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-top:3px;}
+.quotes-btn{background:transparent;border:1px solid var(--border2);color:var(--text2);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:6px 16px;cursor:pointer;letter-spacing:.08em;transition:all .2s;white-space:nowrap;}
+.quotes-btn:hover{border-color:var(--accent);color:var(--accent);}
+.quotes-btn.active{background:var(--accent);color:#0a0a0a;border-color:var(--accent);font-weight:600;}
 
-  .week-indicator { margin: 0 20px 12px; padding: 10px 12px; background: var(--bg3); border: 1px solid var(--border); border-left: 2px solid var(--accent); }
-  .wi-label { font-size: 9px; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
-  .wi-phase { font-size: 11px; color: var(--accent); font-weight: 500; }
-  .wi-dates { font-size: 10px; color: var(--text2); margin-top: 2px; }
+/* QUOTES DRAWER */
+.quotes-drawer{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 24px;max-height:0;overflow:hidden;transition:max-height .35s ease, padding .35s ease;}
+.quotes-drawer.open{max-height:260px;padding:18px 24px;}
+.quote-list{display:flex;gap:14px;}
+.quote-item{flex:1;padding:12px 14px;background:var(--bg3);border:1px solid var(--border);border-left:2px solid var(--accent);}
+.quote-num{font-size:9px;color:var(--text3);margin-bottom:5px;}
+.quote-text{font-size:13px;color:var(--text);line-height:1.6;font-family:'IBM Plex Sans',sans-serif;font-style:italic;font-weight:300;}
+.quote-author{font-size:11px;color:var(--text3);margin-top:6px;}
 
-  .phase-legend { padding: 0 20px 16px; }
-  .pl-title { font-size: 9px; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
-  .pl-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; font-size: 10px; color: var(--text2); }
-  .pl-bar { height: 3px; width: 24px; border-radius: 1px; }
+/* MAIN BODY — two columns */
+.right-body{flex:1;overflow-y:auto;padding:20px 24px;display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-content:start;}
+.right-body::-webkit-scrollbar{width:4px;}
+.right-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
 
-  .right { display: flex; flex-direction: column; overflow: hidden; }
-  .right-header { padding: 20px 28px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
-  .rh-date { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.05em; line-height: 1; color: var(--text); }
-  .rh-week { font-size: 10px; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+.section-card{background:var(--bg2);border:1px solid var(--border);padding:18px 20px;overflow-y:auto;}
+.sc-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.sc-label::after{content:'';flex:1;height:1px;background:var(--border);}
 
-  .right-body { flex: 1; overflow-y: auto; padding: 24px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-content: start; }
-  .right-body::-webkit-scrollbar { width: 4px; }
-  .right-body::-webkit-scrollbar-track { background: transparent; }
-  .right-body::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+/* TODO */
+.todo-section{margin-bottom:16px;}
+.todo-track{font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px;font-weight:500;}
+.todo-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+.todo-item:last-child{border-bottom:none;}
+.todo-check{width:14px;height:14px;border:1px solid var(--border2);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.todo-check.done{background:var(--accent);border-color:var(--accent);}
+.todo-check.done::after{content:'✓';font-size:9px;color:#0a0a0a;font-weight:700;}
+.todo-text{font-size:13px;color:var(--text);line-height:1.55;transition:color .15s;}
+.todo-item.done-item .todo-text{color:var(--text3);text-decoration:line-through;}
 
-  .section-card { background: var(--bg2); border: 1px solid var(--border); padding: 18px 20px; }
-  .section-card.full-width { grid-column: 1 / -1; }
-  .sc-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text3); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-  .sc-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.checkpoint-bar{margin-top:14px;padding:12px 14px;background:var(--bg3);border:1px solid var(--border);border-left:2px solid var(--accent);}
+.cb-label{font-size:9px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;}
+.cb-item{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);padding:3px 0;}
+.cb-item::before{content:'✦';color:var(--accent);opacity:.6;font-size:8px;margin-top:3px;flex-shrink:0;}
 
-  .quote-list { display: flex; flex-direction: column; gap: 10px; }
-  .quote-item { padding: 12px 14px; background: var(--bg3); border: 1px solid var(--border); border-left: 2px solid var(--accent); }
-  .quote-num { font-size: 9px; color: var(--text3); margin-bottom: 6px; }
-  .quote-text { font-size: 12px; color: var(--text); line-height: 1.6; font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-style: italic; }
-  .quote-author { font-size: 10px; color: var(--text3); margin-top: 6px; letter-spacing: 0.06em; }
+/* FOCUS */
+.focus-track{margin-bottom:16px;}
+.ft-name{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.ft-item{font-size:12px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);line-height:1.4;}
+.ft-item::before{content:'→ ';color:var(--text3);}
+.ft-item:last-child{border-bottom:none;}
 
-  .todo-section { margin-bottom: 14px; }
-  .todo-track { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-  .todo-item { display: flex; align-items: flex-start; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
-  .todo-item:last-child { border-bottom: none; }
-  .todo-check { width: 13px; height: 13px; border: 1px solid var(--border2); flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
-  .todo-check.done { background: var(--accent); border-color: var(--accent); }
-  .todo-check.done::after { content: '✓'; font-size: 8px; color: #0a0a0a; font-weight: 700; }
-  .todo-text { font-size: 11px; color: var(--text); line-height: 1.5; transition: color 0.15s; }
-  .todo-item.done-item .todo-text { color: var(--text3); text-decoration: line-through; }
+/* EMPTY */
+.empty-state{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center;}
+.empty-big{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--border2);letter-spacing:.1em;line-height:1;margin-bottom:12px;}
+.empty-sub{font-size:12px;color:var(--text3);line-height:1.8;}
 
-  .rhythm-grid { display: flex; flex-direction: column; gap: 6px; }
-  .rhythm-row { display: grid; grid-template-columns: 80px 1fr; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); }
-  .rhythm-row:last-child { border-bottom: none; }
-  .rhythm-time { font-size: 10px; color: var(--accent); font-weight: 500; }
-  .rhythm-task { font-size: 11px; color: var(--text2); }
-
-  .checkpoint-bar { margin-top: 12px; padding: 10px 12px; background: var(--bg3); border: 1px solid var(--border); border-left: 2px solid var(--accent); }
-  .cb-label { font-size: 9px; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
-  .cb-item { display: flex; align-items: flex-start; gap: 6px; font-size: 10px; color: var(--text2); padding: 2px 0; }
-  .cb-item::before { content: '✦'; color: var(--accent); opacity: 0.6; font-size: 8px; margin-top: 2px; flex-shrink: 0; }
-
-  .empty-state { grid-column: 1/-1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; text-align: center; }
-  .empty-big { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--border2); letter-spacing: 0.1em; line-height: 1; margin-bottom: 12px; }
-  .empty-sub { font-size: 11px; color: var(--text3); line-height: 1.8; }
-
-  .ns-bar { padding: 10px 28px; border-top: 1px solid var(--border); background: var(--bg2); flex-shrink: 0; display: flex; align-items: center; gap: 12px; }
-  .ns-label { font-size: 9px; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
-  .ns-text { font-size: 10px; color: var(--text2); }
+.ns-bar{padding:10px 24px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;align-items:center;gap:12px;}
+.ns-label{font-size:9px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
+.ns-text{font-size:11px;color:var(--text2);}
 </style>
 </head>
 <body>
@@ -118,14 +119,13 @@
 <div class="topbar">
   <div class="topbar-left">
     <span class="topbar-title">SUMMER 2026</span>
-    <span class="topbar-sub">Jun – Aug 2026 · Aditya ND · @wimpykidaditya</span>
+    <span class="topbar-sub">Jun – Aug · Aditya ND · @wimpykidaditya</span>
   </div>
   <div class="topbar-right">
     <div class="track-dot"><span class="dot" style="background:var(--ghost)"></span>Ghost Scene</div>
     <div class="track-dot"><span class="dot" style="background:var(--dl)"></span>Deep Learning</div>
     <div class="track-dot"><span class="dot" style="background:var(--yt)"></span>YouTube</div>
     <div class="track-dot"><span class="dot" style="background:var(--lab)"></span>Internship</div>
-    <div class="track-dot"><span class="dot" style="background:var(--body)"></span>Body + Self</div>
   </div>
 </div>
 
@@ -153,8 +153,7 @@
         <div class="wi-dates" id="wiDates">—</div>
       </div>
       <div class="phase-legend">
-        <div class="pl-title">Plan Phases</div>
-        <div class="pl-item"><div class="pl-bar" style="background:var(--text3)"></div>Before plan</div>
+        <div class="pl-title">Phases</div>
         <div class="pl-item"><div class="pl-bar" style="background:#4a6fa5"></div>Phase 01 · Foundation</div>
         <div class="pl-item"><div class="pl-bar" style="background:#6a9e78"></div>Phase 02 · Build + Ship</div>
         <div class="pl-item"><div class="pl-bar" style="background:#9b7fe8"></div>Phase 03 · Depth</div>
@@ -164,265 +163,244 @@
 
   <div class="right">
     <div class="right-header">
-      <div class="rh-date" id="rhDate">SELECT A DAY</div>
-      <div class="rh-week" id="rhWeek">Click any date in June, July, or August to load your plan</div>
+      <div class="rh-left">
+        <div class="rh-date" id="rhDate">SELECT A DAY</div>
+        <div class="rh-week" id="rhWeek">Click any date in June, July, or August</div>
+      </div>
+      <button class="quotes-btn" id="quotesBtn" onclick="toggleQuotes()" style="display:none">✦ QUOTES</button>
     </div>
+
+    <div class="quotes-drawer" id="quotesDrawer">
+      <div class="quote-list" id="quoteList"></div>
+    </div>
+
     <div class="right-body" id="rightBody">
       <div class="empty-state">
         <div class="empty-big">JUN 1</div>
-        <div class="empty-sub">Click a day on the calendar<br>to load your tasks + quotes.<br><br><span style="color:var(--accent);opacity:0.6">Highlighted dates are in the plan.</span></div>
+        <div class="empty-sub">Click a day to load your tasks.<br><br><span style="color:var(--accent);opacity:.6">Highlighted dates are in the plan.</span></div>
       </div>
     </div>
+
     <div class="ns-bar">
       <span class="ns-label">North Star</span>
-      <span class="ns-text">Week 9: Ghost Scene live URL · 2 YouTube episodes · DL through ResNet · 8–10kg down · You painted. You played flute.</span>
+      <span class="ns-text">Week 9: Ghost Scene live URL · 3 YouTube episodes · DL through ResNet · paper-reading-log published</span>
     </div>
   </div>
 </div>
 
 <script>
-const PLAN_START = new Date(2026, 5, 1);
-const PLAN_END   = new Date(2026, 7, 1);
+const PLAN_START=new Date(2026,5,1),PLAN_END=new Date(2026,7,2);
+let quotesOpen=false;
 
-// 63 quotes — one per day Jun 1 → Aug 2
-const ALL_QUOTES = [
-  // Week 1 — Foundation begins
-  { q: "The beginning is the most important part of the work.", a: "Plato" },
-  { q: "Start where you are. Use what you have. Do what you can.", a: "Arthur Ashe" },
-  { q: "A journey of a thousand miles begins with a single step.", a: "Lao Tzu" },
-  { q: "The secret of getting ahead is getting started.", a: "Mark Twain" },
-  { q: "You don't have to be great to start, but you have to start to be great.", a: "Zig Ziglar" },
-  { q: "Small daily improvements over time lead to stunning results.", a: "Robin Sharma" },
-  { q: "Discipline is the bridge between goals and accomplishment.", a: "Jim Rohn" },
-
-  // Week 2 — First real work
-  { q: "It does not matter how slowly you go as long as you do not stop.", a: "Confucius" },
-  { q: "The expert in anything was once a beginner.", a: "Helen Hayes" },
-  { q: "Do the difficult things while they are easy and do great things while they are small.", a: "Lao Tzu" },
-  { q: "An investment in knowledge pays the best interest.", a: "Benjamin Franklin" },
-  { q: "The more that you read, the more things you will know.", a: "Dr. Seuss" },
-  { q: "Learning never exhausts the mind.", a: "Leonardo da Vinci" },
-  { q: "Research is seeing what everybody else has seen and thinking what nobody else has thought.", a: "Albert Szent-Györgyi" },
-
-  // Week 3 — Iteration
-  { q: "You will never always be motivated, so you must learn to be disciplined.", a: "Unknown" },
-  { q: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", a: "Aristotle" },
-  { q: "The impediment to action advances action. What stands in the way becomes the way.", a: "Marcus Aurelius" },
-  { q: "If you are not willing to look stupid, nothing great is ever going to happen to you.", a: "Dr. Gregory House" },
-  { q: "Creativity is intelligence having fun.", a: "Albert Einstein" },
-  { q: "An idea that is not dangerous is unworthy of being called an idea at all.", a: "Oscar Wilde" },
-  { q: "The painter has the universe in his mind and hands.", a: "Leonardo da Vinci" },
-
-  // Week 4 — Ship week approaches
-  { q: "Done is better than perfect.", a: "Sheryl Sandberg" },
-  { q: "Real artists ship.", a: "Steve Jobs" },
-  { q: "If you're not embarrassed by the first version of your product, you've launched too late.", a: "Reid Hoffman" },
-  { q: "The purpose of art is washing the dust of daily life off our souls.", a: "Pablo Picasso" },
-  { q: "To create one's own world takes courage.", a: "Georgia O'Keeffe" },
-  { q: "The body achieves what the mind believes.", a: "Unknown" },
-  { q: "Take care of your body. It's the only place you have to live.", a: "Jim Rohn" },
-
-  // Week 5 — Build momentum
-  { q: "Success is the sum of small efforts, repeated day in and day out.", a: "Robert Collier" },
-  { q: "The difference between ordinary and extraordinary is that little extra.", a: "Jimmy Johnson" },
-  { q: "Push yourself, because no one else is going to do it for you.", a: "Unknown" },
-  { q: "In the middle of every difficulty lies opportunity.", a: "Albert Einstein" },
-  { q: "Problems are not stop signs, they are guidelines.", a: "Robert Schuller" },
-  { q: "The measure of intelligence is the ability to change.", a: "Albert Einstein" },
-  { q: "It is not the strongest of the species that survives, but the most adaptable.", a: "Charles Darwin" },
-
-  // Week 6 — SHIP WEEK
-  { q: "A ship in harbor is safe, but that is not what ships are for.", a: "John A. Shedd" },
-  { q: "You miss 100% of the shots you don't take.", a: "Wayne Gretzky" },
-  { q: "The best time to plant a tree was 20 years ago. The second best time is now.", a: "Chinese Proverb" },
-  { q: "Courage is not the absence of fear, but the triumph over it.", a: "Nelson Mandela" },
-  { q: "Fortune favors the bold.", a: "Virgil" },
-  { q: "The only way to do great work is to love what you do.", a: "Steve Jobs" },
-  { q: "Your work is going to fill a large part of your life. Make it worth it.", a: "Steve Jobs" },
-
-  // Week 7 — Depth begins
-  { q: "Any fool can know. The point is to understand.", a: "Albert Einstein" },
-  { q: "The more I learn, the more I realize how much I don't know.", a: "Albert Einstein" },
-  { q: "Study without desire spoils the memory, and it retains nothing that it takes in.", a: "Leonardo da Vinci" },
-  { q: "In seeking wisdom thou art wise; in imagining that thou hast attained it, thou art a fool.", a: "Rabbi Ben-Azai" },
-  { q: "The roots of education are bitter, but the fruit is sweet.", a: "Aristotle" },
-  { q: "Real knowledge is to know the extent of one's ignorance.", a: "Confucius" },
-  { q: "Stillness is where creativity and solutions to problems are found.", a: "Eckhart Tolle" },
-
-  // Week 8 — Endure
-  { q: "It always seems impossible until it's done.", a: "Nelson Mandela" },
-  { q: "Fall seven times, stand up eight.", a: "Japanese Proverb" },
-  { q: "The harder you work for something, the greater you'll feel when you achieve it.", a: "Unknown" },
-  { q: "Pain is temporary. Quitting lasts forever.", a: "Lance Armstrong" },
-  { q: "Endurance is not just the ability to bear hard things, but to turn them into glory.", a: "William Barclay" },
-  { q: "He who has a why to live can bear almost any how.", a: "Friedrich Nietzsche" },
-  { q: "Our greatest glory is not in never falling, but in rising every time we fall.", a: "Confucius" },
-
-  // Week 9 — Final push + reflection
-  { q: "What you do today can improve all your tomorrows.", a: "Ralph Marston" },
-  { q: "The finish line is just the beginning of a whole new race.", a: "Unknown" },
-  { q: "Look back and be grateful, look ahead and be hopeful, look around and be helpful.", a: "Ritu Ghatourey" },
-  { q: "Out of difficulties grow miracles.", a: "Jean de la Bruyère" },
-  { q: "The secret of change is to focus all your energy not on fighting the old, but on building the new.", a: "Socrates" },
-  { q: "You are allowed to be both a masterpiece and a work in progress simultaneously.", a: "Sophia Bush" },
-  { q: "What we plant in the soil of contemplation, we shall reap in the harvest of action.", a: "Meister Eckhart" },
+const ALL_QUOTES=[
+  {q:"The beginning is the most important part of the work.",a:"Plato"},
+  {q:"Start where you are. Use what you have. Do what you can.",a:"Arthur Ashe"},
+  {q:"A journey of a thousand miles begins with a single step.",a:"Lao Tzu"},
+  {q:"The secret of getting ahead is getting started.",a:"Mark Twain"},
+  {q:"Small daily improvements over time lead to stunning results.",a:"Robin Sharma"},
+  {q:"Discipline is the bridge between goals and accomplishment.",a:"Jim Rohn"},
+  {q:"It does not matter how slowly you go as long as you do not stop.",a:"Confucius"},
+  {q:"The expert in anything was once a beginner.",a:"Helen Hayes"},
+  {q:"Do the difficult things while they are easy.",a:"Lao Tzu"},
+  {q:"An investment in knowledge pays the best interest.",a:"Benjamin Franklin"},
+  {q:"Learning never exhausts the mind.",a:"Leonardo da Vinci"},
+  {q:"Research is seeing what everybody else has seen and thinking what nobody else has thought.",a:"Albert Szent-Györgyi"},
+  {q:"We are what we repeatedly do. Excellence, then, is not an act, but a habit.",a:"Aristotle"},
+  {q:"The impediment to action advances action. What stands in the way becomes the way.",a:"Marcus Aurelius"},
+  {q:"If you are not willing to look stupid, nothing great is ever going to happen to you.",a:"Dr. Gregory House"},
+  {q:"Creativity is intelligence having fun.",a:"Albert Einstein"},
+  {q:"Done is better than perfect.",a:"Sheryl Sandberg"},
+  {q:"Real artists ship.",a:"Steve Jobs"},
+  {q:"If you're not embarrassed by the first version of your product, you've launched too late.",a:"Reid Hoffman"},
+  {q:"To create one's own world takes courage.",a:"Georgia O'Keeffe"},
+  {q:"Success is the sum of small efforts, repeated day in and day out.",a:"Robert Collier"},
+  {q:"In the middle of every difficulty lies opportunity.",a:"Albert Einstein"},
+  {q:"A ship in harbor is safe, but that is not what ships are for.",a:"John A. Shedd"},
+  {q:"You miss 100% of the shots you don't take.",a:"Wayne Gretzky"},
+  {q:"Fortune favors the bold.",a:"Virgil"},
+  {q:"Any fool can know. The point is to understand.",a:"Albert Einstein"},
+  {q:"The roots of education are bitter, but the fruit is sweet.",a:"Aristotle"},
+  {q:"Stillness is where creativity and solutions to problems are found.",a:"Eckhart Tolle"},
+  {q:"It always seems impossible until it's done.",a:"Nelson Mandela"},
+  {q:"Fall seven times, stand up eight.",a:"Japanese Proverb"},
+  {q:"He who has a why to live can bear almost any how.",a:"Friedrich Nietzsche"},
+  {q:"The secret of change is to focus all your energy on building the new.",a:"Socrates"},
+  {q:"You are allowed to be both a masterpiece and a work in progress simultaneously.",a:"Sophia Bush"},
+  {q:"Vision without execution is just hallucination.",a:"Thomas Edison"},
+  {q:"Knowing is not enough; we must apply.",a:"Goethe"},
+  {q:"The mind is not a vessel to be filled but a fire to be kindled.",a:"Plutarch"},
+  {q:"Perfection is achieved when there is nothing left to take away.",a:"Antoine de Saint-Exupéry"},
+  {q:"You don't rise to the level of your goals, you fall to the level of your systems.",a:"James Clear"},
+  {q:"Amateurs wait for inspiration; the rest of us just get up and go to work.",a:"Stephen King"},
+  {q:"The only source of knowledge is experience.",a:"Albert Einstein"},
 ];
 
-const WEEKS = [
-  { num:1, dates:'Jun 1–7', phase:'Phase 01 · Foundation', phaseColor:'#4a6fa5',
-    tasks:{ 'Ghost Scene':['Shoot 200+ hostel room photos','Set up gaussian-splatting repo + CUDA','Run COLMAP — verify camera poses','Read Kerbl 2023 intro + method'], 'Deep Learning':['CS231n Lec 4 — Backprop intuition','Goodfellow Ch 6 — forward/backward','d2l.ai: implement two-layer net in NumPy'], 'Internship':['Prof meeting — align crime scene scope','Draft internship scope document','paper-reading-log repo setup'], 'YouTube':['Finish Ep1 script (currently 30%)','Research Mel Slater PI/Psi deeply'], 'Body + Self':['Set calorie target + download tracker app','Morning run: 20–30 min, 4–5x this week','Bodyweight circuit: push/pull/squat 3x','Painting + flute: 3–4x, 20 min each'] },
-    checkpoints:['COLMAP sparse reconstruction succeeds','Backprop: can explain chain rule without notes','Ep1 script 100% done','Calorie tracking streak begins'] },
-  { num:2, dates:'Jun 8–14', phase:'Phase 01 · Foundation', phaseColor:'#4a6fa5',
-    tasks:{ 'Ghost Scene':['Train 3DGS — first attempt','Evaluate PSNR / SSIM on held-out views','Reshoot problem zones if needed','Log experiments in markdown table'], 'Deep Learning':['CS231n Lec 5 — CNNs','Goodfellow Ch 9 — conv nets','d2l.ai: LeNet from scratch'], 'Internship':['Read full Kerbl 2023 paper','paper-reading-log: entry 1 live'], 'YouTube':['Record Ep1 voiceover — 2–3 takes','Begin DaVinci rough cut'], 'Body + Self':['Run: increase to 30–35 min','Add 10 min post-run stretching','Week 2 weight check-in'] },
-    checkpoints:['First trained 3DGS .ply — even if rough','paper-reading-log: entry 1 live','Ep1 voiceover recorded'] },
-  { num:3, dates:'Jun 15–21', phase:'Phase 01 · Foundation', phaseColor:'#4a6fa5',
-    tasks:{ 'Ghost Scene':['Iterate training — tune hyperparams','Export .ply, verify in SuperSplat','Research Three.js 3DGS viewer options','Set up basic Three.js scene'], 'Deep Learning':['CS231n Lec 6 — Training dynamics','Goodfellow Ch 7 — Regularization','d2l.ai: dropout + weight decay'], 'Internship':['Crime scene dataset planning','Confirm location + lighting conditions','paper-reading-log: entry 2'], 'YouTube':['Full DaVinci edit — tight cut','Color grade + title cards','Thumbnail — Brutalist aesthetic'], 'Body + Self':['Introduce chest-focused bodyweight work','Track: sleep 7h minimum target','Week 3 weight check-in — target ~1.5kg down'] },
-    checkpoints:['.ply opens cleanly in SuperSplat','Ep1 edit 90% done','~1–1.5kg down from baseline'] },
-  { num:4, dates:'Jun 22–28', phase:'Phase 02 · Build + Ship', phaseColor:'#6a9e78',
-    tasks:{ 'Ghost Scene':['.ply rendering in browser — desktop first','WebXR API — Enter VR button','Test on Chrome WebXR emulator','Fix stereo rendering bugs'], 'Deep Learning':['CS231n Lec 7 — Optimization','Goodfellow Ch 8 — SGD, Adam, momentum','d2l.ai: optimizer comparison experiment'], 'Internship':['First crime scene capture session','Run COLMAP on crime scene data','Read one 3DGS efficiency paper'], 'YouTube':['Publish Episode 1 🎬','X caption + LinkedIn write-up','Begin Ep2 outline — Ghost Scene build log'], 'Body + Self':['Run: 35–40 min, 5x/week','Add progressive overload on push circuit','Week 4 check-in — target ~2–3kg down'] },
-    checkpoints:['YouTube Episode 1 — published','Ghost Scene: .ply visible in browser'] },
-  { num:5, dates:'Jun 29 – Jul 5', phase:'Phase 02 · Build + Ship', phaseColor:'#6a9e78',
-    tasks:{ 'Ghost Scene':['WebXR: teleport locomotion on Quest','Add ambient audio layer','Optimize splat count for <60MB','Deploy to GitHub Pages / Vercel'], 'Deep Learning':['CS231n Lec 9 — CNN architectures','BatchNorm — why it works','d2l.ai: BN from scratch'], 'Internship':['Iterate crime scene reconstruction','Begin perceptual benchmark design','Define research question + hypothesis'], 'YouTube':['Ep2 script draft — honest build log','Record screen captures during build'], 'Body + Self':['Introduce interval running 2x/week','Calorie audit — adjust if plateau'] },
-    checkpoints:['Ghost Scene: walkable in Quest browser','Shareable URL live'] },
-  { num:6, dates:'Jul 6–12', phase:'Phase 02 · Build + Ship ✦ SHIP WEEK', phaseColor:'#e8c547',
-    tasks:{ 'Ghost Scene':['Record 90s demo walkthrough video','Write Hashnode build log (3-act)','Post: X, LinkedIn, r/webxr, itch.io','Add to adityand.github.io portfolio'], 'Deep Learning':['ResNet — skip connections, why they work','d2l.ai: implement ResNet-18','DL block retrospective — what stuck?'], 'Internship':['Build simple benchmark web tool','Run pilot study: 5–10 participants'], 'YouTube':['Record Ep2 voiceover + headset footage','Full DaVinci edit — raise quality from Ep1'], 'Body + Self':['Week 6 check-in — target ~4–5kg down','Progress photos (personal, not public)'] },
-    checkpoints:['Ghost Scene — live URL + demo video + Hashnode post','DL: all 6 topics done','Benchmark pilot study complete'] },
-  { num:7, dates:'Jul 13–19', phase:'Phase 03 · Depth', phaseColor:'#9b7fe8',
-    tasks:{ 'Ghost Scene':['Polish from community feedback','Non-VR fallback: mouse orbit on desktop'], 'Deep Learning':['Karpathy micrograd — autograd from scratch','PyTorch basics — Bourke 00–01','First training loop end-to-end in PyTorch'], 'Internship':['Full benchmark study — 20–30 participants','Collect + begin data analysis','paper-reading-log: 3+ entries'], 'YouTube':['Publish Episode 2 🎬','Analyze Ep1 performance — what landed?','Begin Ep3 outline'], 'Body + Self':['Running: 40–45 min, 5x/week','Deload week on bodyweight if needed'] },
-    checkpoints:['YouTube Episode 2 — published','Full benchmark study data collected','PyTorch: first training loop running'] },
-  { num:8, dates:'Jul 20–26', phase:'Phase 03 · Depth', phaseColor:'#9b7fe8',
-    tasks:{ 'Ghost Scene':['Open source PR — small fix/docs on gaussian-splatting or nerfstudio'], 'Deep Learning':['PyTorch: image classifier Bourke 02–03','W&B experiment tracking','Transfer learning with pretrained CNN'], 'Internship':['Full data analysis — write results section','Identify "Gap I Noticed" finding','Prof meeting — feedback on direction'], 'YouTube':['Script, record, edit Ep3','Begin 90-day retrospective Hashnode post'], 'Body + Self':['Running: maintain 40–45 min','Week 8 check-in — target ~7–8kg down'] },
-    checkpoints:['Benchmark key finding identified','Ep3 in production'] },
-  { num:9, dates:'Jul 27 – Aug 1', phase:'Phase 03 · Depth · FINAL WEEK', phaseColor:'#e85454',
-    tasks:{ 'Ghost Scene':['Final polish pass on live URL'], 'Deep Learning':['PyTorch CNN project — wrap up','Scope next learning block'], 'Internship':['Prof: share full benchmark results','Identify arXiv preprint angle'], 'YouTube':['Publish Episode 3 🎬','90-day retrospective Hashnode post live','Update LinkedIn with all credentials'], 'Body + Self':['Week 9 final check-in — target 8–10kg down','Reflect: what worked in the routine?','Keep painting + flute going'] },
-    checkpoints:['YouTube Episode 3 — published','90-day retrospective live','8–10kg down from Jun 1 baseline','Full portfolio updated'] },
+const WEEKS=[
+  {num:1,dates:'Jun 1–7',phase:'Phase 01 · Foundation',phaseColor:'#4a6fa5',
+   tasks:{'Ghost Scene':['Shoot 200+ hostel room photos','Set up gaussian-splatting repo + CUDA','Run COLMAP — verify camera poses','Read Kerbl 2023 intro + method'],'Deep Learning':['CS231n Lec 4 — Backprop intuition','Goodfellow Ch 6 — forward/backward','d2l.ai: implement two-layer net in NumPy'],'Internship':['Prof meeting — align crime scene scope','Draft internship scope document','paper-reading-log repo setup'],'YouTube':['Finish Ep1 script (currently 30%)','Research Mel Slater PI/Psi deeply']},
+   checkpoints:['COLMAP sparse reconstruction succeeds','Backprop: can explain chain rule without notes','Ep1 script 100% done']},
+  {num:2,dates:'Jun 8–14',phase:'Phase 01 · Foundation',phaseColor:'#4a6fa5',
+   tasks:{'Ghost Scene':['Train 3DGS — first attempt','Evaluate PSNR / SSIM on held-out views','Reshoot problem zones if needed','Log experiments in markdown table'],'Deep Learning':['CS231n Lec 5 — CNNs','Goodfellow Ch 9 — conv nets','d2l.ai: LeNet from scratch'],'Internship':['Read full Kerbl 2023 paper','paper-reading-log: entry 1 live'],'YouTube':['Record Ep1 voiceover — 2–3 takes','Begin DaVinci rough cut']},
+   checkpoints:['First trained 3DGS .ply — even if rough','paper-reading-log: entry 1 live','Ep1 voiceover recorded']},
+  {num:3,dates:'Jun 15–21',phase:'Phase 01 · Foundation',phaseColor:'#4a6fa5',
+   tasks:{'Ghost Scene':['Iterate training — tune hyperparams','Export .ply, verify in SuperSplat','Research Three.js 3DGS viewer options','Set up basic Three.js scene'],'Deep Learning':['CS231n Lec 6 — Training dynamics','Goodfellow Ch 7 — Regularization','d2l.ai: dropout + weight decay'],'Internship':['Crime scene dataset planning','Confirm location + lighting conditions','paper-reading-log: entry 2'],'YouTube':['Full DaVinci edit — tight cut','Color grade + title cards','Thumbnail — Brutalist aesthetic']},
+   checkpoints:['.ply opens cleanly in SuperSplat','Ep1 edit 90% done']},
+  {num:4,dates:'Jun 22–28',phase:'Phase 02 · Build + Ship',phaseColor:'#6a9e78',
+   tasks:{'Ghost Scene':['.ply rendering in browser — desktop first','WebXR API — Enter VR button','Test on Chrome WebXR emulator','Fix stereo rendering bugs'],'Deep Learning':['CS231n Lec 7 — Optimization','Goodfellow Ch 8 — SGD, Adam, momentum','d2l.ai: optimizer comparison experiment'],'Internship':['First crime scene capture session','Run COLMAP on crime scene data','Read one 3DGS efficiency paper'],'YouTube':['Publish Episode 1 🎬','X caption + LinkedIn write-up','Begin Ep2 outline — Ghost Scene build log']},
+   checkpoints:['YouTube Episode 1 — published','Ghost Scene: .ply visible in browser']},
+  {num:5,dates:'Jun 29 – Jul 5',phase:'Phase 02 · Build + Ship',phaseColor:'#6a9e78',
+   tasks:{'Ghost Scene':['WebXR: teleport locomotion on Quest','Add ambient audio layer','Optimize splat count for <60MB','Deploy to GitHub Pages / Vercel'],'Deep Learning':['CS231n Lec 9 — CNN architectures','BatchNorm — why it works','d2l.ai: BN from scratch'],'Internship':['Iterate crime scene reconstruction','Begin perceptual benchmark design','Define research question + hypothesis'],'YouTube':['Ep2 script draft — honest build log','Record screen captures during build']},
+   checkpoints:['Ghost Scene: walkable in Quest browser','Shareable URL live']},
+  {num:6,dates:'Jul 6–12',phase:'Phase 02 · Build + Ship ✦ SHIP WEEK',phaseColor:'#e8c547',
+   tasks:{'Ghost Scene':['Record 90s demo walkthrough video','Write Hashnode build log (3-act)','Post: X, LinkedIn, r/webxr, itch.io','Add to adityand.github.io portfolio'],'Deep Learning':['ResNet — skip connections, why they work','d2l.ai: implement ResNet-18','DL block retrospective — what stuck?'],'Internship':['Build simple benchmark web tool','Run pilot study: 5–10 participants'],'YouTube':['Record Ep2 voiceover + headset footage','Full DaVinci edit — raise quality from Ep1']},
+   checkpoints:['Ghost Scene — live URL + demo video + Hashnode post','DL: all 6 topics done','Benchmark pilot study complete']},
+  {num:7,dates:'Jul 13–19',phase:'Phase 03 · Depth',phaseColor:'#9b7fe8',
+   tasks:{'Ghost Scene':['Polish from community feedback','Non-VR fallback: mouse orbit on desktop'],'Deep Learning':['Karpathy micrograd — autograd from scratch','PyTorch basics — Bourke 00–01','First training loop end-to-end in PyTorch'],'Internship':['Full benchmark study — 20–30 participants','Collect + begin data analysis','paper-reading-log: 3+ entries'],'YouTube':['Publish Episode 2 🎬','Analyze Ep1 performance — what landed?','Begin Ep3 outline']},
+   checkpoints:['YouTube Episode 2 — published','Full benchmark study data collected','PyTorch: first training loop running']},
+  {num:8,dates:'Jul 20–26',phase:'Phase 03 · Depth',phaseColor:'#9b7fe8',
+   tasks:{'Ghost Scene':['Open source PR — small fix/docs on gaussian-splatting or nerfstudio'],'Deep Learning':['PyTorch: image classifier Bourke 02–03','W&B experiment tracking','Transfer learning with pretrained CNN'],'Internship':['Full data analysis — write results section','Identify "Gap I Noticed" finding','Prof meeting — feedback on direction'],'YouTube':['Script, record, edit Ep3','Begin 90-day retrospective Hashnode post']},
+   checkpoints:['Benchmark key finding identified','Ep3 in production']},
+  {num:9,dates:'Jul 27 – Aug 1',phase:'Phase 03 · Depth · FINAL WEEK',phaseColor:'#e85454',
+   tasks:{'Ghost Scene':['Final polish pass on live URL'],'Deep Learning':['PyTorch CNN project — wrap up','Scope next learning block'],'Internship':['Prof: share full benchmark results','Identify arXiv preprint angle'],'YouTube':['Publish Episode 3 🎬','90-day retrospective Hashnode post live','Update LinkedIn with all credentials']},
+   checkpoints:['YouTube Episode 3 — published','90-day retrospective live','Full portfolio updated']},
 ];
 
-const TRACK_COLORS = { 'Ghost Scene':'#4a90d9','Deep Learning':'#9b7fe8','YouTube':'#e8674a','Internship':'#4ac49b','Body + Self':'#e8a84a' };
-const DAILY_RHYTHM = [
-  { time:'6:00–7:00', task:'Run (Vidyanagara Park) + bodyweight circuit' },
-  { time:'8:00–10:00', task:'Deep Learning — CS231n + Goodfellow + d2l.ai' },
-  { time:'10:30–1:30', task:'Ghost Scene build / Internship work' },
-  { time:'3:00–5:00', task:'YouTube — script / record / edit' },
-  { time:'7:00–7:30', task:'Painting or flute (3–4x/week)' },
-  { time:'Calories', task:'1600–1800 kcal/day · high protein · track on app' },
-];
-const MONTH_NAMES = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+const TRACK_COLORS={'Ghost Scene':'#4a90d9','Deep Learning':'#9b7fe8','YouTube':'#e8674a','Internship':'#4ac49b'};
+const MONTH_NAMES=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
 
-let currentMonth = 5, currentYear = 2026, selectedDate = null;
-let doneItems = {};
-try { doneItems = JSON.parse(localStorage.getItem('doneItems') || '{}'); } catch(e) {}
-function saveState() { try { localStorage.setItem('doneItems', JSON.stringify(doneItems)); } catch(e) {} }
+let currentMonth=5,currentYear=2026,selectedDate=null,currentWeek=null;
+let doneItems={};
+try{doneItems=JSON.parse(localStorage.getItem('doneItems')||'{}');}catch(e){}
+function saveState(){try{localStorage.setItem('doneItems',JSON.stringify(doneItems));}catch(e){}}
 
-function getWeekForDate(date) {
-  const d = new Date(date); d.setHours(0,0,0,0);
-  const start = new Date(PLAN_START); start.setHours(0,0,0,0);
-  if (d < start) return null;
-  const idx = Math.floor((d - start) / 86400000 / 7);
-  return idx < WEEKS.length ? WEEKS[idx] : null;
+function getWeekForDate(d){
+  const dt=new Date(d);dt.setHours(0,0,0,0);
+  const st=new Date(PLAN_START);st.setHours(0,0,0,0);
+  if(dt<st)return null;
+  const idx=Math.floor((dt-st)/86400000/7);
+  return idx<WEEKS.length?WEEKS[idx]:null;
+}
+function getQuotesForDate(d){
+  const dt=new Date(d);dt.setHours(0,0,0,0);
+  const st=new Date(PLAN_START);st.setHours(0,0,0,0);
+  const day=Math.floor((dt-st)/86400000);
+  if(day<0)return[];
+  return[0,1,2].map(i=>ALL_QUOTES[(day*3+i)%ALL_QUOTES.length]);
 }
 
-function getQuotesForDate(date) {
-  const d = new Date(date); d.setHours(0,0,0,0);
-  const start = new Date(PLAN_START); start.setHours(0,0,0,0);
-  const dayIdx = Math.floor((d - start) / 86400000);
-  if (dayIdx < 0) return [];
-  // pick 3 quotes per day, cycling through the pool
-  return [0,1,2].map(i => ALL_QUOTES[(dayIdx * 3 + i) % ALL_QUOTES.length]);
+function toggleQuotes(){
+  quotesOpen=!quotesOpen;
+  document.getElementById('quotesDrawer').classList.toggle('open',quotesOpen);
+  document.getElementById('quotesBtn').classList.toggle('active',quotesOpen);
+  document.getElementById('quotesBtn').textContent=quotesOpen?'✕ CLOSE QUOTES':'✦ QUOTES';
 }
 
-function renderCalendar() {
-  document.getElementById('calMonthLabel').textContent = MONTH_NAMES[currentMonth];
-  document.getElementById('calYearLabel').textContent = currentYear;
-  const grid = document.getElementById('calGrid'); grid.innerHTML = '';
-  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  const today = new Date(); today.setHours(0,0,0,0);
-  for (let i = 0; i < firstDay; i++) { const el = document.createElement('div'); el.className = 'cal-cell empty'; grid.appendChild(el); }
-  for (let d = 1; d <= daysInMonth; d++) {
-    const date = new Date(currentYear, currentMonth, d); date.setHours(0,0,0,0);
-    const el = document.createElement('div'); el.className = 'cal-cell'; el.textContent = d;
-    if (getWeekForDate(date)) el.classList.add('in-plan');
-    if (date < today) el.classList.add('past');
-    if (date.getTime() === today.getTime()) el.classList.add('today');
-    if (selectedDate && date.getTime() === selectedDate.getTime()) el.classList.add('selected');
-    el.addEventListener('click', () => selectDate(date));
+function renderCalendar(){
+  document.getElementById('calMonthLabel').textContent=MONTH_NAMES[currentMonth];
+  document.getElementById('calYearLabel').textContent=currentYear;
+  const grid=document.getElementById('calGrid');grid.innerHTML='';
+  const firstDay=new Date(currentYear,currentMonth,1).getDay();
+  const dim=new Date(currentYear,currentMonth+1,0).getDate();
+  const today=new Date();today.setHours(0,0,0,0);
+  for(let i=0;i<firstDay;i++){const e=document.createElement('div');e.className='cal-cell empty';grid.appendChild(e);}
+  for(let d=1;d<=dim;d++){
+    const date=new Date(currentYear,currentMonth,d);date.setHours(0,0,0,0);
+    const el=document.createElement('div');el.className='cal-cell';el.textContent=d;
+    if(getWeekForDate(date))el.classList.add('in-plan');
+    if(date<today)el.classList.add('past');
+    if(date.getTime()===today.getTime())el.classList.add('today');
+    if(selectedDate&&date.getTime()===selectedDate.getTime())el.classList.add('selected');
+    el.addEventListener('click',()=>selectDate(date));
     grid.appendChild(el);
   }
 }
+function prevMonth(){currentMonth--;if(currentMonth<0){currentMonth=11;currentYear--;}renderCalendar();}
+function nextMonth(){currentMonth++;if(currentMonth>11){currentMonth=0;currentYear++;}renderCalendar();}
 
-function prevMonth() { currentMonth--; if (currentMonth < 0) { currentMonth = 11; currentYear--; } renderCalendar(); }
-function nextMonth() { currentMonth++; if (currentMonth > 11) { currentMonth = 0; currentYear++; } renderCalendar(); }
-
-function selectDate(date) {
-  selectedDate = date; renderCalendar();
-  const mn = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const dn = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  document.getElementById('rhDate').textContent = `${dn[date.getDay()]}, ${mn[date.getMonth()]} ${date.getDate()}`.toUpperCase();
-  const week = getWeekForDate(date);
-  if (!week) {
-    document.getElementById('rhWeek').textContent = 'Outside the 9-week plan window';
-    document.getElementById('rightBody').innerHTML = `<div class="empty-state"><div class="empty-big">OUT OF PLAN</div><div class="empty-sub">Select a date between Jun 1 and Aug 1.</div></div>`;
-    document.getElementById('weekIndicator').style.display = 'none';
+function selectDate(date){
+  selectedDate=date;renderCalendar();
+  const mn=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const dn=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  document.getElementById('rhDate').textContent=`${dn[date.getDay()]}, ${mn[date.getMonth()]} ${date.getDate()}`.toUpperCase();
+  const week=getWeekForDate(date);
+  const btn=document.getElementById('quotesBtn');
+  if(!week){
+    document.getElementById('rhWeek').textContent='Outside the 9-week plan window';
+    document.getElementById('rightBody').innerHTML=`<div class="empty-state"><div class="empty-big">OUT OF PLAN</div><div class="empty-sub">Select a date between Jun 1 and Aug 1.</div></div>`;
+    document.getElementById('weekIndicator').style.display='none';
+    btn.style.display='none';
     return;
   }
-  document.getElementById('rhWeek').textContent = `Week ${week.num} · ${week.dates} · ${week.phase}`;
-  const wi = document.getElementById('weekIndicator'); wi.style.display = 'block';
-  document.getElementById('wiPhase').textContent = week.phase;
-  document.getElementById('wiPhase').style.color = week.phaseColor;
-  document.getElementById('wiDates').textContent = week.dates;
-  renderRightPanel(week, date);
-}
+  document.getElementById('rhWeek').textContent=`Week ${week.num} · ${week.dates} · ${week.phase}`;
+  const wi=document.getElementById('weekIndicator');wi.style.display='block';
+  document.getElementById('wiPhase').textContent=week.phase;
+  document.getElementById('wiPhase').style.color=week.phaseColor;
+  document.getElementById('wiDates').textContent=week.dates;
+  btn.style.display='block';
+  currentWeek=week;
 
-function renderRightPanel(week, date) {
-  const quotes = getQuotesForDate(date);
-  const quotesHTML = quotes.map((q, i) => `
+  // render quotes (always fresh when date changes)
+  const quotes=getQuotesForDate(date);
+  document.getElementById('quoteList').innerHTML=quotes.map((q,i)=>`
     <div class="quote-item">
       <div class="quote-num">${String(i+1).padStart(2,'0')}</div>
       <div class="quote-text">"${q.q}"</div>
       <div class="quote-author">— ${q.a}</div>
     </div>`).join('');
 
-  let todoHTML = '';
-  for (const [track, items] of Object.entries(week.tasks)) {
-    const color = TRACK_COLORS[track] || '#888';
-    todoHTML += `<div class="todo-section"><div class="todo-track" style="color:${color}"><span style="width:6px;height:6px;border-radius:50%;background:${color};display:inline-block;margin-right:4px"></span>${track}</div>`;
-    items.forEach((item, idx) => {
-      const key = `${week.num}-${track}-${idx}`;
-      const done = doneItems[key];
-      todoHTML += `<div class="todo-item ${done?'done-item':''}" onclick="toggleTodo('${key}',this)"><div class="todo-check ${done?'done':''}"></div><span class="todo-text">${item}</span></div>`;
+  renderRightPanel(week);
+}
+
+function renderRightPanel(week){
+  let todoHTML='';
+  for(const[track,items]of Object.entries(week.tasks)){
+    const color=TRACK_COLORS[track]||'#888';
+    todoHTML+=`<div class="todo-section">
+      <div class="todo-track" style="color:${color}">
+        <span style="width:8px;height:8px;border-radius:50%;background:${color};display:inline-block"></span>${track}
+      </div>`;
+    items.forEach((item,idx)=>{
+      const key=`${week.num}-${track}-${idx}`;
+      const done=doneItems[key];
+      todoHTML+=`<div class="todo-item${done?' done-item':''}" onclick="toggleTodo('${key}',this)">
+        <div class="todo-check${done?' done':''}"></div>
+        <span class="todo-text">${item}</span>
+      </div>`;
     });
-    todoHTML += `</div>`;
+    todoHTML+=`</div>`;
+  }
+  const cpHTML=week.checkpoints.map(c=>`<div class="cb-item">${c}</div>`).join('');
+
+  let focusHTML='';
+  for(const[track,items]of Object.entries(week.tasks)){
+    const color=TRACK_COLORS[track]||'#888';
+    focusHTML+=`<div class="focus-track">
+      <div class="ft-name" style="color:${color}"><span style="width:8px;height:8px;border-radius:50%;background:${color};display:inline-block"></span>${track}</div>
+      ${items.map(i=>`<div class="ft-item">${i}</div>`).join('')}
+    </div>`;
   }
 
-  const cpHTML = week.checkpoints.map(c => `<div class="cb-item">${c}</div>`).join('');
-  const rhythmHTML = DAILY_RHYTHM.map(r => `<div class="rhythm-row"><span class="rhythm-time">${r.time}</span><span class="rhythm-task">${r.task}</span></div>`).join('');
-
-  document.getElementById('rightBody').innerHTML = `
-    <div class="section-card full-width">
-      <div class="sc-label">Quotes for the Day</div>
-      <div class="quote-list">${quotesHTML}</div>
-    </div>
-    <div class="section-card" style="overflow-y:auto;max-height:420px">
-      <div class="sc-label">Week ${week.num} · To-Do List</div>
+  document.getElementById('rightBody').innerHTML=`
+    <div class="section-card">
+      <div class="sc-label">Week ${week.num} · To-Do Checklist</div>
       ${todoHTML}
-      <div class="checkpoint-bar"><div class="cb-label">Week checkpoints</div>${cpHTML}</div>
+      <div class="checkpoint-bar"><div class="cb-label">Week Checkpoints</div>${cpHTML}</div>
     </div>
-    <div class="section-card" style="overflow-y:auto;max-height:420px">
-      <div class="sc-label">Daily Rhythm</div>
-      <div class="rhythm-grid">${rhythmHTML}</div>
+    <div class="section-card">
+      <div class="sc-label">Week ${week.num} · Focus</div>
+      ${focusHTML}
     </div>`;
 }
 
-function toggleTodo(key, el) {
-  doneItems[key] = !doneItems[key]; saveState();
+function toggleTodo(key,el){
+  doneItems[key]=!doneItems[key];saveState();
   el.classList.toggle('done-item');
   el.querySelector('.todo-check').classList.toggle('done');
 }
 
 renderCalendar();
-const today = new Date(); today.setHours(0,0,0,0);
-if (today >= PLAN_START && today <= PLAN_END) { currentMonth = today.getMonth(); currentYear = today.getFullYear(); renderCalendar(); selectDate(today); }
+const today=new Date();today.setHours(0,0,0,0);
+if(today>=PLAN_START&&today<=PLAN_END){currentMonth=today.getMonth();currentYear=today.getFullYear();renderCalendar();selectDate(today);}
 </script>
 </body>
 </html>
